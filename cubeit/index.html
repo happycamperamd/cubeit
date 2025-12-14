@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edgar and the Killer Flowers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background: #0e1a14;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      gap: 20px;
+    }
+
+    .image-container {
+      max-width: 90vw;
+      max-height: 90vh;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      background: rgba(0, 0, 0, 0.7);
+      color: #e8f5e9;
+      padding: 12px 16px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .title-controls {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .title-controls input {
+      padding: 10px 16px;
+      font-size: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #e8f5e9;
+      min-width: 250px;
+    }
+
+    .title-controls input:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .title-controls button {
+      padding: 10px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #4a9e5f;
+      color: white;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+
+    .title-controls button:hover {
+      background: #5cb373;
+    }
+
+    .title-controls button:active {
+      background: #3d7e4f;
+    }
+
+    h1 {
+      color: #e8f5e9;
+      font-size: 32px;
+      font-weight: 600;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="title-controls">
+    <input type="text" id="titleInput" placeholder="Enter new title..." />
+    <button id="changeTitleBtn">Change Title</button>
+  </div>
+  <h1 id="pageTitle">Edgar The Vampire</h1>
+  <figure class="image-container">
+    <img src="Edgar_600_600.png" alt="Edgar the vampire dancing among smiling killer flowers under a full moon in the forest" />
+    <figcaption>
+      Edgar the Vampire, his murderous flowers, and a very concerned Bigfoot
+    </figcaption>
+  </figure>
+
+  <script>
+    document.getElementById('changeTitleBtn').addEventListener('click', function() {
+      const input = document.getElementById('titleInput');
+      const newTitle = input.value.trim();
+      
+      if (newTitle) {
+        document.getElementById('pageTitle').textContent = newTitle;
+        document.title = newTitle;
+        input.value = ''; // Clear the input after changing title
+      }
+    });
+
+    // Allow Enter key to trigger the button
+    document.getElementById('titleInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        document.getElementById('changeTitleBtn').click();
+      }
+    });
+  </script>
+</body>
+</html>
